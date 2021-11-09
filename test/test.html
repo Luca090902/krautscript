@@ -2,8 +2,8 @@
 <head>
   <title>Tests!</title>
   <meta charset="utf-8">
-  <script type="text/javascript" src="../dist/fikascript.js"></script>
-  <script type="text/javascript" src="../dist/fikascript.browser.js"></script>
+  <script type="text/javascript" src="../dist/krautscript.js"></script>
+  <script type="text/javascript" src="../dist/krautscript.browser.js"></script>
   <style type="text/css">
     .diff {
       color: red;
@@ -28,12 +28,12 @@
     } else {
       window.attachEvent('onload', runTests);
     }
-    FikaScript.run = function(code) {
+    KrautScript.run = function(code) {
       runTest(code)
     }
 
     function runTests() {
-      FikaScript.load('test.fika');
+      KrautScript.load('test.kraut');
     }
 
 
@@ -48,10 +48,10 @@
     }
 
     runTest = function(code) {
-      translation = FikaScript.swedishToEnglish(code);
-      translation = FikaScript.englishToSwedish(translation);
-      translation = FikaScript.swedishToEnglish(translation);
-      translation = FikaScript.englishToSwedish(translation);
+      translation = KrautScript.germanToEnglish(code);
+      translation = KrautScript.englishToGerman(translation);
+      translation = KrautScript.germanToEnglish(translation);
+      translation = KrautScript.englishToGerman(translation);
       code = code.replace(/\s/g, '');
       translation = translation.replace(/\s/g, '');
       if (code != translation) {
