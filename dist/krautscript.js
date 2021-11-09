@@ -1,47 +1,47 @@
-FS = {};
-FikaScript = FS;
+KS = {};
+KrautScript = KS;
 
-FS.keywords = {
+KS.keywords = {
   function: 'funktion',
-        if: 'om',
-      else: 'annars',
-       for: 'för',
-     while: 'medan',
-    return: 'returnera',
-        do: 'gör',
+        if: 'wenn',
+      else: 'sonst',
+       for: 'für',
+     while: 'während',
+    return: 'rückkehr',
+        do: 'tu',
        var: 'var',
-        in: 'inuti',
-       let: 'låt',
-       new: 'ny',
-       try: 'försök',
+        in: 'in',
+       let: 'lass',
+       new: 'neu',
+       try: 'versuch',
       case: 'fall',
-      this: 'detta',
-      with: 'med',
-     break: 'bryt',
-     throw: 'kasta',
-     catch: 'fånga',
-    switch: 'byt',
-  continue: 'fortsätt',
-  debugger: 'avlusare',
-instanceof: 'instansav',
-    typeof: 'typav',
-      void: 'tom',
-    delete: 'tabort',
+      this: 'das',
+      with: 'mit',
+     break: 'bruch',
+     throw: 'werf',
+     catch: 'fang',
+    switch: 'wechsel',
+  continue: 'fortsetze',
+  debugger: 'debugger',
+instanceof: 'instanzvon',
+    typeof: 'typvon',
+      void: 'leer',
+    delete: 'lösch',
    default: 'standard',
-   finally: 'slutligen'
+   finally: 'schließlich'
 };
  
-FS.literals = {
-      true: 'sant',
-     false: 'falskt',
-      null: 'noll'
+KS.literals = {
+      true: 'wahr',
+     false: 'falsch',
+      null: 'null'
 };
  
-FS.identifiers = {
+KS.identifiers = {
   document: 'dokument',
-  console: 'konsol',
-  alert:  'ropa',
-  prompt: 'fråga'
+  console: 'konsole',
+  alert: 'alarm',
+  prompt: 'frage'
 };
 
 function mergeObjects(objects){
@@ -62,33 +62,33 @@ function reverseObject(object) {
   return result;
 };
 
-FS.swedishTokens = mergeObjects([FS.keywords, FS.literals, FS.identifiers]);
+KS.germanTokens = mergeObjects([KS.keywords, KS.literals, KS.identifiers]);
 
-FS.englishTokens = {};
-for (token in FS.swedishTokens) {
-  FS.englishTokens[token] = token;
+KS.englishTokens = {};
+for (token in KS.germanTokens) {
+  KS.englishTokens[token] = token;
 }
 
-FS.englishKeywords = {};
-for (token in FS.keywords) {
-  FS.englishKeywords[token] = token;
+KS.englishKeywords = {};
+for (token in KS.keywords) {
+  KS.englishKeywords[token] = token;
 }
 
 // LOLOLOL
-FS.swedishToEnglishKeywords = reverseObject(FS.keywords);
-FS.englishToEnglishKeywords = {};
-for (keyword in FS.keywords) {
-  FS.englishToEnglishKeywords[keyword] = keyword;
+KS.germanToEnglishKeywords = reverseObject(KS.keywords);
+KS.englishToEnglishKeywords = {};
+for (keyword in KS.keywords) {
+  KS.englishToEnglishKeywords[keyword] = keyword;
 }
 
-FS.swedishToEnglishIdentifiers = reverseObject(FS.identifiers);
-FS.englishToSwedishIdentifiers = FS.identifiers;
+KS.germanToEnglishIdentifiers = reverseObject(KS.identifiers);
+KS.englishToGermanIdentifiers = KS.identifiers;
 
 // Create a reverse hash for the above translations
-FS.inputKeywords = FS.swedishToEnglishKeywords;
-FS.inputIdentifiers = FS.swedishToEnglishIdentifiers; 
-FS.tokens = FS.swedishTokens;
-FS.outputTokens = FS.englishTokens;
+KS.inputKeywords = KS.germanToEnglishKeywords;
+KS.inputIdentifiers = KS.germanToEnglishIdentifiers; 
+KS.tokens = KS.germanTokens;
+KS.outputTokens = KS.englishTokens;
 
 (function() {
   var translate = function(code) {
@@ -98,19 +98,19 @@ FS.outputTokens = FS.englishTokens;
     return parsed;
   };
 
-  FS.swedishToEnglish = function(code) {
-    FS.inputKeywords = FS.swedishToEnglishKeywords;
-    FS.inputIdentifiers = FS.swedishToEnglishIdentifiers; 
-    FS.tokens = FS.swedishTokens;
-    FS.outputTokens = FS.englishTokens;
+  KS.germanToEnglish = function(code) {
+    KS.inputKeywords = KS.germanToEnglishKeywords;
+    KS.inputIdentifiers = KS.germanToEnglishIdentifiers; 
+    KS.tokens = KS.germanTokens;
+    KS.outputTokens = KS.englishTokens;
     return translate(code);
   }
 
-  FS.englishToSwedish = function(code) {
-    FS.inputKeywords = FS.englishToEnglishKeywords;
-    FS.inputIdentifiers = FS.englishToSwedishIdentifiers; 
-    FS.tokens = FS.englishTokens;
-    FS.outputTokens = FS.swedishTokens;
+  KS.englishToGerman = function(code) {
+    KS.inputKeywords = KS.englishToEnglishKeywords;
+    KS.inputIdentifiers = KS.englishToGermanIdentifiers; 
+    KS.tokens = KS.englishTokens;
+    KS.outputTokens = KS.germanTokens;
     return translate(code);
   } 
 })();
@@ -163,7 +163,7 @@ parseStatement: true, parseSourceElement: true */
 
     // Universal Module Definition (UMD) to support AMD, CommonJS/Node.js,
     // Rhino, and plain browser loading.
-    if (typeof define === FS.tokens.function && define.amd) {
+    if (typeof define === KS.tokens.function && define.amd) {
         define(['exports'], factory);
     } else if (typeof exports !== 'undefined') {
         factory(exports);
@@ -216,8 +216,8 @@ parseStatement: true, parseSourceElement: true */
     TokenName[Token.RegularExpression] = 'RegularExpression';
 
     // A function following one of those tokens is an expression.
-    FnExprTokens = ['(', '{', '[', FS.tokens.in, FS.tokens.typeof, FS.tokens.instanceof, FS.tokens.new,
-                    FS.tokens.return, FS.tokens.case, 'delete', FS.tokens.throw, FS.tokens.void,
+    FnExprTokens = ['(', '{', '[', KS.tokens.in, KS.tokens.typeof, KS.tokens.instanceof, KS.tokens.new,
+                    KS.tokens.return, KS.tokens.case, 'delete', KS.tokens.throw, KS.tokens.void,
                     // assignment operators
                     '=', '+=', '-=', '*=', '/=', '%=', '<<=', '>>=', '>>>=',
                     '&=', '|=', '^=', ',',
@@ -404,7 +404,7 @@ parseStatement: true, parseSourceElement: true */
         case 'public':
         case 'static':
         case 'yield':
-        case FS.tokens.let:
+        case KS.tokens.let:
             return true;
         default:
             return false;
@@ -423,10 +423,10 @@ parseStatement: true, parseSourceElement: true */
         }
 
         // 'const' is specialized as Keyword in V8.
-        // 'yield' and FS.tokens.let are for compatiblity with SpiderMonkey and ES.next.
+        // 'yield' and KS.tokens.let are for compatiblity with SpiderMonkey and ES.next.
         // Some others are from future reserved words.
 
-        return FS.inputKeywords[id] != null;
+        return KS.inputKeywords[id] != null;
     }
 
     // 7.4 Comments
@@ -678,9 +678,9 @@ parseStatement: true, parseSourceElement: true */
             type = Token.Identifier;
         } else if (isKeyword(id)) {
             type = Token.Keyword;
-        } else if (id === FS.tokens.null) {
+        } else if (id === KS.tokens.null) {
             type = Token.NullLiteral;
-        } else if (id === FS.tokens.true || id === FS.tokens.false) {
+        } else if (id === KS.tokens.true || id === KS.tokens.false) {
             type = Token.BooleanLiteral;
         } else {
             type = Token.Identifier;
@@ -1264,10 +1264,10 @@ parseStatement: true, parseSourceElement: true */
                 checkToken = extra.tokens[extra.openParenToken - 1];
                 if (checkToken &&
                         checkToken.type === 'Keyword' &&
-                        (checkToken.value === FS.tokens.if ||
-                         checkToken.value === FS.tokens.while ||
-                         checkToken.value === FS.tokens.for ||
-                         checkToken.value === FS.tokens.with)) {
+                        (checkToken.value === KS.tokens.if ||
+                         checkToken.value === KS.tokens.while ||
+                         checkToken.value === KS.tokens.for ||
+                         checkToken.value === KS.tokens.with)) {
                     return collectRegex();
                 }
                 return scanPunctuator();
@@ -1294,7 +1294,7 @@ parseStatement: true, parseSourceElement: true */
                 }
                 // checkToken determines whether the function is
                 // a declaration or an expression.
-                if (FnExprFS.tokens.indexOf(checkToken.value) >= 0) {
+                if (FnExprKS.tokens.indexOf(checkToken.value) >= 0) {
                     // It is an expression.
                     return scanPunctuator();
                 }
@@ -1626,7 +1626,7 @@ parseStatement: true, parseSourceElement: true */
         createIdentifier: function (name) {
             return {
                 type: Syntax.Identifier,
-                name: FS.inputIdentifiers[name] || name
+                name: KS.inputIdentifiers[name] || name
             };
         },
 
@@ -2177,15 +2177,15 @@ parseStatement: true, parseSourceElement: true */
             }
             expr = delegate.createLiteral(lex());
         } else if (type === Token.Keyword) {
-            if (matchKeyword(FS.tokens.this)) {
+            if (matchKeyword(KS.tokens.this)) {
                 lex();
                 expr = delegate.createThisExpression();
-            } else if (matchKeyword(FS.tokens.function)) {
+            } else if (matchKeyword(KS.tokens.function)) {
                 expr = parseFunctionExpression();
             }
         } else if (type === Token.BooleanLiteral) {
             token = lex();
-            token.value = (token.value === FS.tokens.true);
+            token.value = (token.value === KS.tokens.true);
             expr = delegate.createLiteral(token);
         } else if (type === Token.NullLiteral) {
             token = lex();
@@ -2267,7 +2267,7 @@ parseStatement: true, parseSourceElement: true */
         var callee, args;
 
         delegate.markStart();
-        expectKeyword(FS.tokens.new);
+        expectKeyword(KS.tokens.new);
         callee = parseLeftHandSideExpression();
         args = match('(') ? parseArguments() : [];
 
@@ -2279,7 +2279,7 @@ parseStatement: true, parseSourceElement: true */
 
         marker = createLocationMarker();
 
-        expr = matchKeyword(FS.tokens.new) ? parseNewExpression() : parsePrimaryExpression();
+        expr = matchKeyword(KS.tokens.new) ? parseNewExpression() : parsePrimaryExpression();
 
         while (match('.') || match('[') || match('(')) {
             if (match('(')) {
@@ -2306,7 +2306,7 @@ parseStatement: true, parseSourceElement: true */
 
         marker = createLocationMarker();
 
-        expr = matchKeyword(FS.tokens.new) ? parseNewExpression() : parsePrimaryExpression();
+        expr = matchKeyword(KS.tokens.new) ? parseNewExpression() : parsePrimaryExpression();
 
         while (match('.') || match('[')) {
             if (match('[')) {
@@ -2378,7 +2378,7 @@ parseStatement: true, parseSourceElement: true */
             token = lex();
             expr = parseUnaryExpression();
             expr = delegate.createUnaryExpression(token.value, expr);
-        } else if (matchKeyword('delete') || matchKeyword(FS.tokens.void) || matchKeyword(FS.tokens.typeof)) {
+        } else if (matchKeyword('delete') || matchKeyword(KS.tokens.void) || matchKeyword(KS.tokens.typeof)) {
             token = lex();
             expr = parseUnaryExpression();
             expr = delegate.createUnaryExpression(token.value, expr);
@@ -2431,11 +2431,11 @@ parseStatement: true, parseSourceElement: true */
         case '>':
         case '<=':
         case '>=':
-        case FS.tokens.instanceof:
+        case KS.tokens.instanceof:
             prec = 7;
             break;
 
-        case FS.tokens.in:
+        case KS.tokens.in:
             prec = allowIn ? 7 : 0;
             break;
 
@@ -2754,7 +2754,7 @@ parseStatement: true, parseSourceElement: true */
     function parseIfStatement() {
         var test, consequent, alternate;
 
-        expectKeyword(FS.tokens.if);
+        expectKeyword(KS.tokens.if);
 
         expect('(');
 
@@ -2764,7 +2764,7 @@ parseStatement: true, parseSourceElement: true */
 
         consequent = parseStatement();
 
-        if (matchKeyword(FS.tokens.else)) {
+        if (matchKeyword(KS.tokens.else)) {
             lex();
             alternate = parseStatement();
         } else {
@@ -2779,7 +2779,7 @@ parseStatement: true, parseSourceElement: true */
     function parseDoWhileStatement() {
         var body, test, oldInIteration;
 
-        expectKeyword(FS.tokens.do);
+        expectKeyword(KS.tokens.do);
 
         oldInIteration = state.inIteration;
         state.inIteration = true;
@@ -2788,7 +2788,7 @@ parseStatement: true, parseSourceElement: true */
 
         state.inIteration = oldInIteration;
 
-        expectKeyword(FS.tokens.while);
+        expectKeyword(KS.tokens.while);
 
         expect('(');
 
@@ -2806,7 +2806,7 @@ parseStatement: true, parseSourceElement: true */
     function parseWhileStatement() {
         var test, body, oldInIteration;
 
-        expectKeyword(FS.tokens.while);
+        expectKeyword(KS.tokens.while);
 
         expect('(');
 
@@ -2839,19 +2839,19 @@ parseStatement: true, parseSourceElement: true */
 
         init = test = update = null;
 
-        expectKeyword(FS.tokens.for);
+        expectKeyword(KS.tokens.for);
 
         expect('(');
 
         if (match(';')) {
             lex();
         } else {
-            if (matchKeyword('var') || matchKeyword(FS.tokens.let)) {
+            if (matchKeyword('var') || matchKeyword(KS.tokens.let)) {
                 state.allowIn = false;
                 init = parseForVariableDeclaration();
                 state.allowIn = true;
 
-                if (init.declarations.length === 1 && matchKeyword(FS.tokens.in)) {
+                if (init.declarations.length === 1 && matchKeyword(KS.tokens.in)) {
                     lex();
                     left = init;
                     right = parseExpression();
@@ -2862,7 +2862,7 @@ parseStatement: true, parseSourceElement: true */
                 init = parseExpression();
                 state.allowIn = true;
 
-                if (matchKeyword(FS.tokens.in)) {
+                if (matchKeyword(KS.tokens.in)) {
                     // LeftHandSideExpression
                     if (!isLeftHandSide(init)) {
                         throwError({}, Messages.InvalidLHSInForIn);
@@ -2911,7 +2911,7 @@ parseStatement: true, parseSourceElement: true */
     function parseContinueStatement() {
         var label = null, key;
 
-        expectKeyword(FS.tokens.continue);
+        expectKeyword(KS.tokens.continue);
 
         // Optimize the most common form: 'continue;'.
         if (source.charCodeAt(index) === 59) {
@@ -2955,7 +2955,7 @@ parseStatement: true, parseSourceElement: true */
     function parseBreakStatement() {
         var label = null, key;
 
-        expectKeyword(FS.tokens.break);
+        expectKeyword(KS.tokens.break);
 
         // Catch the very common case first: immediately a semicolon (char #59).
         if (source.charCodeAt(index) === 59) {
@@ -2999,13 +2999,13 @@ parseStatement: true, parseSourceElement: true */
     function parseReturnStatement() {
         var argument = null;
 
-        expectKeyword(FS.tokens.return);
+        expectKeyword(KS.tokens.return);
 
         if (!state.inFunctionBody) {
             throwErrorTolerant({}, Messages.IllegalReturn);
         }
 
-        // FS.tokens.return followed by a space and an identifier is very common.
+        // KS.tokens.return followed by a space and an identifier is very common.
         if (source.charCodeAt(index) === 32) {
             if (isIdentifierStart(source.charCodeAt(index + 1))) {
                 argument = parseExpression();
@@ -3038,7 +3038,7 @@ parseStatement: true, parseSourceElement: true */
             throwErrorTolerant({}, Messages.StrictModeWith);
         }
 
-        expectKeyword(FS.tokens.with);
+        expectKeyword(KS.tokens.with);
 
         expect('(');
 
@@ -3060,17 +3060,17 @@ parseStatement: true, parseSourceElement: true */
 
         skipComment();
         delegate.markStart();
-        if (matchKeyword(FS.tokens.default)) {
+        if (matchKeyword(KS.tokens.default)) {
             lex();
             test = null;
         } else {
-            expectKeyword(FS.tokens.case);
+            expectKeyword(KS.tokens.case);
             test = parseExpression();
         }
         expect(':');
 
         while (index < length) {
-            if (match('}') || matchKeyword(FS.tokens.default) || matchKeyword(FS.tokens.case)) {
+            if (match('}') || matchKeyword(KS.tokens.default) || matchKeyword(KS.tokens.case)) {
                 break;
             }
             statement = parseStatement();
@@ -3083,7 +3083,7 @@ parseStatement: true, parseSourceElement: true */
     function parseSwitchStatement() {
         var discriminant, cases, clause, oldInSwitch, defaultFound;
 
-        expectKeyword(FS.tokens.switch);
+        expectKeyword(KS.tokens.switch);
 
         expect('(');
 
@@ -3130,7 +3130,7 @@ parseStatement: true, parseSourceElement: true */
     function parseThrowStatement() {
         var argument;
 
-        expectKeyword(FS.tokens.throw);
+        expectKeyword(KS.tokens.throw);
 
         if (peekLineTerminator()) {
             throwError({}, Messages.NewlineAfterThrow);
@@ -3150,7 +3150,7 @@ parseStatement: true, parseSourceElement: true */
 
         skipComment();
         delegate.markStart();
-        expectKeyword(FS.tokens.catch);
+        expectKeyword(KS.tokens.catch);
 
         expect('(');
         if (match(')')) {
@@ -3171,15 +3171,15 @@ parseStatement: true, parseSourceElement: true */
     function parseTryStatement() {
         var block, handlers = [], finalizer = null;
 
-        expectKeyword(FS.tokens.try);
+        expectKeyword(KS.tokens.try);
 
         block = parseBlock();
 
-        if (matchKeyword(FS.tokens.catch)) {
+        if (matchKeyword(KS.tokens.catch)) {
             handlers.push(parseCatchClause());
         }
 
-        if (matchKeyword(FS.tokens.finally)) {
+        if (matchKeyword(KS.tokens.finally)) {
             lex();
             finalizer = parseBlock();
         }
@@ -3194,7 +3194,7 @@ parseStatement: true, parseSourceElement: true */
     // 12.15 The debugger statement
 
     function parseDebuggerStatement() {
-        expectKeyword(FS.tokens.debugger);
+        expectKeyword(KS.tokens.debugger);
 
         consumeSemicolon();
 
@@ -3231,33 +3231,33 @@ parseStatement: true, parseSourceElement: true */
 
         if (type === Token.Keyword) {
             switch (lookahead.value) {
-            case FS.tokens.break:
+            case KS.tokens.break:
                 return delegate.markEnd(parseBreakStatement());
-            case FS.tokens.continue:
+            case KS.tokens.continue:
                 return delegate.markEnd(parseContinueStatement());
-            case FS.tokens.debugger:
+            case KS.tokens.debugger:
                 return delegate.markEnd(parseDebuggerStatement());
-            case FS.tokens.do:
+            case KS.tokens.do:
                 return delegate.markEnd(parseDoWhileStatement());
-            case FS.tokens.for:
+            case KS.tokens.for:
                 return delegate.markEnd(parseForStatement());
-            case FS.tokens.function:
+            case KS.tokens.function:
                 return delegate.markEnd(parseFunctionDeclaration());
-            case FS.tokens.if:
+            case KS.tokens.if:
                 return delegate.markEnd(parseIfStatement());
-            case FS.tokens.return:
+            case KS.tokens.return:
                 return delegate.markEnd(parseReturnStatement());
-            case FS.tokens.switch:
+            case KS.tokens.switch:
                 return delegate.markEnd(parseSwitchStatement());
-            case FS.tokens.throw:
+            case KS.tokens.throw:
                 return delegate.markEnd(parseThrowStatement());
-            case FS.tokens.try:
+            case KS.tokens.try:
                 return delegate.markEnd(parseTryStatement());
             case 'var':
                 return delegate.markEnd(parseVariableStatement());
-            case FS.tokens.while:
+            case KS.tokens.while:
                 return delegate.markEnd(parseWhileStatement());
-            case FS.tokens.with:
+            case KS.tokens.with:
                 return delegate.markEnd(parseWithStatement());
             default:
                 break;
@@ -3408,7 +3408,7 @@ parseStatement: true, parseSourceElement: true */
         skipComment();
         delegate.markStart();
 
-        expectKeyword(FS.tokens.function);
+        expectKeyword(KS.tokens.function);
         token = lookahead;
         id = parseVariableIdentifier();
         if (strict) {
@@ -3450,7 +3450,7 @@ parseStatement: true, parseSourceElement: true */
         var token, id = null, stricted, firstRestricted, message, tmp, params = [], body, previousStrict;
 
         delegate.markStart();
-        expectKeyword(FS.tokens.function);
+        expectKeyword(KS.tokens.function);
 
         if (!match('(')) {
             token = lookahead;
@@ -3497,9 +3497,9 @@ parseStatement: true, parseSourceElement: true */
         if (lookahead.type === Token.Keyword) {
             switch (lookahead.value) {
             case 'const':
-            case FS.tokens.let:
+            case KS.tokens.let:
                 return parseConstLetDeclaration(lookahead.value);
-            case FS.tokens.function:
+            case KS.tokens.function:
                 return parseFunctionDeclaration();
             default:
                 return parseStatement();
@@ -3811,7 +3811,7 @@ parseStatement: true, parseSourceElement: true */
     exports.Syntax = (function () {
         var name, types = {};
 
-        if (typeof Object.create === FS.tokens.function) {
+        if (typeof Object.create === KS.tokens.function) {
             types = Object.create(null);
         }
 
@@ -3821,7 +3821,7 @@ parseStatement: true, parseSourceElement: true */
             }
         }
 
-        if (typeof Object.freeze === FS.tokens.function) {
+        if (typeof Object.freeze === KS.tokens.function) {
             Object.freeze(types);
         }
 
@@ -4634,7 +4634,7 @@ require.define("/escodegen.js",function(require,module,exports,__dirname,__filen
         }
 
         if (value === 1 / 0) {
-            return json ? FS.outputTokens.null : renumber ? '1e400' : '1e+400';
+            return json ? KS.outputTokens.null : renumber ? '1e400' : '1e+400';
         }
 
         result = '' + value;
@@ -5166,7 +5166,7 @@ require.define("/escodegen.js",function(require,module,exports,__dirname,__filen
                 allowCall: true
             });
 
-            expr.operator = FS.outputTokens[FS.inputKeywords[expr.operator]] || expr.operator;
+            expr.operator = KS.outputTokens[KS.inputKeywords[expr.operator]] || expr.operator;
 
             if (expr.operator === '/' && fragment.toString().charAt(0) === '/') {
                 // If '/' concats with '/', it is interpreted as comment start
@@ -5175,7 +5175,7 @@ require.define("/escodegen.js",function(require,module,exports,__dirname,__filen
                 result = join(result, fragment);
             }
 
-            if (expr.operator === FS.outputTokens.in && !allowIn) {
+            if (expr.operator === KS.outputTokens.in && !allowIn) {
                 result = ['(', result, ')'];
             } else {
                 result = parenthesize(result, currentPrecedence, precedence);
@@ -5216,7 +5216,7 @@ require.define("/escodegen.js",function(require,module,exports,__dirname,__filen
             allowUnparenthesizedNew = option.allowUnparenthesizedNew === undefined || option.allowUnparenthesizedNew;
 
             result = join(
-                FS.outputTokens.new,
+                KS.outputTokens.new,
                 generateExpression(expr.callee, {
                     precedence: Precedence.New,
                     allowIn: true,
@@ -5278,7 +5278,7 @@ require.define("/escodegen.js",function(require,module,exports,__dirname,__filen
                 allowCall: true
             });
 
-            expr.operator = FS.outputTokens[FS.inputKeywords[expr.operator]] || expr.operator;
+            expr.operator = KS.outputTokens[KS.inputKeywords[expr.operator]] || expr.operator;
 
             if (space === '') {
                 result = join(expr.operator, fragment);
@@ -5354,7 +5354,7 @@ require.define("/escodegen.js",function(require,module,exports,__dirname,__filen
             break;
 
         case Syntax.FunctionExpression:
-            result = FS.outputTokens.function;
+            result = KS.outputTokens.function;
             if (expr.id) {
                 result += ' ' + expr.id.name;
             } else {
@@ -5544,7 +5544,7 @@ require.define("/escodegen.js",function(require,module,exports,__dirname,__filen
             break;
 
         case Syntax.ThisExpression:
-            result = FS.outputTokens.this;
+            result = KS.outputTokens.this;
             break;
 
         case Syntax.Identifier:
@@ -5567,7 +5567,7 @@ require.define("/escodegen.js",function(require,module,exports,__dirname,__filen
             }
 
             if (expr.value === null) {
-                result = FS.outputTokens.null;
+                result = KS.outputTokens.null;
                 break;
             }
 
@@ -5581,11 +5581,11 @@ require.define("/escodegen.js",function(require,module,exports,__dirname,__filen
                 break;
             }
             if (expr.value === true) {
-              result = FS.outputTokens.true;
+              result = KS.outputTokens.true;
               break;
             }
             if (expr.value === false) {
-              result = FS.outputTokens.false;
+              result = KS.outputTokens.false;
               break;
             }
             result = expr.value.toString();
@@ -5613,7 +5613,7 @@ require.define("/escodegen.js",function(require,module,exports,__dirname,__filen
             }
 
             if (expr.filter) {
-                result = join(result, FS.outputTokens.if + space);
+                result = join(result, KS.outputTokens.if + space);
                 fragment = generateExpression(expr.filter, {
                     precedence: Precedence.Sequence,
                     allowIn: true,
@@ -5644,7 +5644,7 @@ require.define("/escodegen.js",function(require,module,exports,__dirname,__filen
                 });
             }
 
-            fragment = join(fragment, expr.of ? 'of' : FS.outputTokens.in);
+            fragment = join(fragment, expr.of ? 'of' : KS.outputTokens.in);
             fragment = join(fragment, generateExpression(expr.right, {
                 precedence: Precedence.Sequence,
                 allowIn: true,
@@ -5652,9 +5652,9 @@ require.define("/escodegen.js",function(require,module,exports,__dirname,__filen
             }));
 
             if (extra.moz.parenthesizedComprehensionBlock) {
-                result = [ FS.outputTokens.for + space + '(', fragment, ')' ];
+                result = [ KS.outputTokens.for + space + '(', fragment, ')' ];
             } else {
-                result = join(FS.outputTokens.for + space, fragment);
+                result = join(KS.outputTokens.for + space, fragment);
             }
             break;
 
@@ -5703,17 +5703,17 @@ require.define("/escodegen.js",function(require,module,exports,__dirname,__filen
 
         case Syntax.BreakStatement:
             if (stmt.label) {
-                result = FS.outputTokens.break + ' ' + stmt.label.name + semicolon;
+                result = KS.outputTokens.break + ' ' + stmt.label.name + semicolon;
             } else {
-                result = FS.outputTokens.break + semicolon;
+                result = KS.outputTokens.break + semicolon;
             }
             break;
 
         case Syntax.ContinueStatement:
             if (stmt.label) {
-                result = FS.outputTokens.continue + ' ' + stmt.label.name + semicolon;
+                result = KS.outputTokens.continue + ' ' + stmt.label.name + semicolon;
             } else {
-                result = FS.outputTokens.continue + semicolon;
+                result = KS.outputTokens.continue + semicolon;
             }
             break;
 
@@ -5727,10 +5727,10 @@ require.define("/escodegen.js",function(require,module,exports,__dirname,__filen
 
         case Syntax.DoWhileStatement:
             // Because `do 42 while (cond)` is Syntax Error. We need semicolon.
-            result = join(FS.outputTokens.do, maybeBlock(stmt.body));
+            result = join(KS.outputTokens.do, maybeBlock(stmt.body));
             result = maybeBlockSuffix(stmt.body, result);
             result = join(result, [
-                FS.outputTokens.while + space + '(',
+                KS.outputTokens.while + space + '(',
                 generateExpression(stmt.test, {
                     precedence: Precedence.Sequence,
                     allowIn: true,
@@ -5743,7 +5743,7 @@ require.define("/escodegen.js",function(require,module,exports,__dirname,__filen
         case Syntax.CatchClause:
             withIndent(function () {
                 result = [
-                    FS.outputTokens.catch + space + '(',
+                    KS.outputTokens.catch + space + '(',
                     generateExpression(stmt.param, {
                         precedence: Precedence.Sequence,
                         allowIn: true,
@@ -5756,7 +5756,7 @@ require.define("/escodegen.js",function(require,module,exports,__dirname,__filen
             break;
 
         case Syntax.DebuggerStatement:
-            result = FS.outputTokens.debugger + semicolon;
+            result = KS.outputTokens.debugger + semicolon;
             break;
 
         case Syntax.EmptyStatement:
@@ -5771,7 +5771,7 @@ require.define("/escodegen.js",function(require,module,exports,__dirname,__filen
             })];
             // 12.4 '{', 'function' is not allowed in this position.
             // wrap expression with parentheses
-            if (result.toString().charAt(0) === '{' || (result.toString().slice(0, 8) === FS.outputTokens.function && " (".indexOf(result.toString().charAt(8)) >= 0) || (directive && directiveContext && stmt.expression.type === Syntax.Literal && typeof stmt.expression.value === 'string')) {
+            if (result.toString().charAt(0) === '{' || (result.toString().slice(0, 8) === KS.outputTokens.function && " (".indexOf(result.toString().charAt(8)) >= 0) || (directive && directiveContext && stmt.expression.type === Syntax.Literal && typeof stmt.expression.value === 'string')) {
                 result = ['(', result, ')' + semicolon];
             } else {
                 result.push(semicolon);
@@ -5842,7 +5842,7 @@ require.define("/escodegen.js",function(require,module,exports,__dirname,__filen
 
         case Syntax.ThrowStatement:
             result = [join(
-                FS.outputTokens.throw,
+                KS.outputTokens.throw,
                 generateExpression(stmt.argument, {
                     precedence: Precedence.Sequence,
                     allowIn: true,
@@ -5852,7 +5852,7 @@ require.define("/escodegen.js",function(require,module,exports,__dirname,__filen
             break;
 
         case Syntax.TryStatement:
-            result = [FS.outputTokens.try, maybeBlock(stmt.block)];
+            result = [KS.outputTokens.try, maybeBlock(stmt.block)];
             result = maybeBlockSuffix(stmt.block, result);
             for (i = 0, len = stmt.handlers.length; i < len; i += 1) {
                 result = join(result, generateStatement(stmt.handlers[i]));
@@ -5861,14 +5861,14 @@ require.define("/escodegen.js",function(require,module,exports,__dirname,__filen
                 }
             }
             if (stmt.finalizer) {
-                result = join(result, [FS.outputTokens.finally, maybeBlock(stmt.finalizer)]);
+                result = join(result, [KS.outputTokens.finally, maybeBlock(stmt.finalizer)]);
             }
             break;
 
         case Syntax.SwitchStatement:
             withIndent(function () {
                 result = [
-                    FS.outputTokens.switch + space + '(',
+                    KS.outputTokens.switch + space + '(',
                     generateExpression(stmt.discriminant, {
                         precedence: Precedence.Sequence,
                         allowIn: true,
@@ -5893,7 +5893,7 @@ require.define("/escodegen.js",function(require,module,exports,__dirname,__filen
             withIndent(function () {
                 if (stmt.test) {
                     result = [
-                        join(FS.outputTokens.case, generateExpression(stmt.test, {
+                        join(KS.outputTokens.case, generateExpression(stmt.test, {
                             precedence: Precedence.Sequence,
                             allowIn: true,
                             allowCall: true
@@ -5901,7 +5901,7 @@ require.define("/escodegen.js",function(require,module,exports,__dirname,__filen
                         ':'
                     ];
                 } else {
-                    result = [FS.outputTokens.default + ':'];
+                    result = [KS.outputTokens.default + ':'];
                 }
 
                 i = 0;
@@ -5929,7 +5929,7 @@ require.define("/escodegen.js",function(require,module,exports,__dirname,__filen
         case Syntax.IfStatement:
             withIndent(function () {
                 result = [
-                    FS.outputTokens.if + space + '(',
+                    KS.outputTokens.if + space + '(',
                     generateExpression(stmt.test, {
                         precedence: Precedence.Sequence,
                         allowIn: true,
@@ -5942,9 +5942,9 @@ require.define("/escodegen.js",function(require,module,exports,__dirname,__filen
                 result.push(maybeBlock(stmt.consequent));
                 result = maybeBlockSuffix(stmt.consequent, result);
                 if (stmt.alternate.type === Syntax.IfStatement) {
-                    result = join(result, [FS.outputTokens.else, generateStatement(stmt.alternate, {semicolonOptional: semicolon === ''})]);
+                    result = join(result, [KS.outputTokens.else, generateStatement(stmt.alternate, {semicolonOptional: semicolon === ''})]);
                 } else {
-                    result = join(result, join(FS.outputTokens.else, maybeBlock(stmt.alternate, semicolon === '')));
+                    result = join(result, join(KS.outputTokens.else, maybeBlock(stmt.alternate, semicolon === '')));
                 }
             } else {
                 result.push(maybeBlock(stmt.consequent, semicolon === ''));
@@ -5953,7 +5953,7 @@ require.define("/escodegen.js",function(require,module,exports,__dirname,__filen
 
         case Syntax.ForStatement:
             withIndent(function () {
-                result = [FS.outputTokens.for + space + '('];
+                result = [KS.outputTokens.for + space + '('];
                 if (stmt.init) {
                     if (stmt.init.type === Syntax.VariableDeclaration) {
                         result.push(generateStatement(stmt.init, {allowIn: false}));
@@ -5993,7 +5993,7 @@ require.define("/escodegen.js",function(require,module,exports,__dirname,__filen
             break;
 
         case Syntax.ForInStatement:
-            result = [FS.outputTokens.for + space + '('];
+            result = [KS.outputTokens.for + space + '('];
             withIndent(function () {
                 if (stmt.left.type === Syntax.VariableDeclaration) {
                     withIndent(function () {
@@ -6009,7 +6009,7 @@ require.define("/escodegen.js",function(require,module,exports,__dirname,__filen
                     }));
                 }
 
-                result = join(result, FS.outputTokens.in);
+                result = join(result, KS.outputTokens.in);
                 result = [join(
                     result,
                     generateExpression(stmt.right, {
@@ -6044,13 +6044,13 @@ require.define("/escodegen.js",function(require,module,exports,__dirname,__filen
             break;
 
         case Syntax.FunctionDeclaration:
-            result = [(stmt.generator && !extra.moz.starlessGenerator ? FS.outputTokens.function + '*': FS.outputTokens.function + ' ') + stmt.id.name, generateFunctionBody(stmt)];
+            result = [(stmt.generator && !extra.moz.starlessGenerator ? KS.outputTokens.function + '*': KS.outputTokens.function + ' ') + stmt.id.name, generateFunctionBody(stmt)];
             break;
 
         case Syntax.ReturnStatement:
             if (stmt.argument) {
                 result = [join(
-                    FS.outputTokens.return,
+                    KS.outputTokens.return,
                     generateExpression(stmt.argument, {
                         precedence: Precedence.Sequence,
                         allowIn: true,
@@ -6058,14 +6058,14 @@ require.define("/escodegen.js",function(require,module,exports,__dirname,__filen
                     })
                 ), semicolon];
             } else {
-                result = [FS.outputTokens.return + semicolon];
+                result = [KS.outputTokens.return + semicolon];
             }
             break;
 
         case Syntax.WhileStatement:
             withIndent(function () {
                 result = [
-                    FS.outputTokens.while + space + '(',
+                    KS.outputTokens.while + space + '(',
                     generateExpression(stmt.test, {
                         precedence: Precedence.Sequence,
                         allowIn: true,
@@ -6080,7 +6080,7 @@ require.define("/escodegen.js",function(require,module,exports,__dirname,__filen
         case Syntax.WithStatement:
             withIndent(function () {
                 result = [
-                    FS.outputTokens.with + space + '(',
+                    KS.outputTokens.with + space + '(',
                     generateExpression(stmt.object, {
                         precedence: Precedence.Sequence,
                         allowIn: true,
