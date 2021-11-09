@@ -18,7 +18,7 @@ KS.keywords = {
       this: 'das',
       with: 'mit',
      break: 'bruch',
-     throw: 'werf',
+     throw: 'werfe',
      catch: 'fange',
     switch: 'wechsle',
   continue: 'fortsetzen',
