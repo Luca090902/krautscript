@@ -1,7 +1,7 @@
 [KrautScript](https://luca090902.github.io/krautscript/)
 ==========
 ![German Flag](/assets/img/flag.png)  
-GermanScript lets you write JavaScript in German; Finally there is a way for Germans to code in their native language!
+KrautScript lets you write JavaScript in German; Finally there is a way for Germans to code in their native language!
 
 See it in action [here](https://luca090902.github.io/krautscript/). 
 ### Including KrautScript files in your HTML
