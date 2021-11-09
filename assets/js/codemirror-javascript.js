@@ -25,8 +25,8 @@ CodeMirror.defineMode("javascript", function(config, parserConfig) {
     };
 
     // Add colours for the German keywords
-    for(token in FS.tokens) {
-      jsKeywords[FS.tokens[token]] = jsKeywords[token];
+    for(token in KS.tokens) {
+      jsKeywords[KS.tokens[token]] = jsKeywords[token];
     }
 
     // Extend the 'normal' keywords with the TypeScript language extensions
