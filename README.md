@@ -14,7 +14,7 @@ KrautScript supports the `text/krautscript` MIME type. Any script tag with that 
 <script type="text/krautscript">
   wenn (x < 5) {
     konsole.log("Ja!");
-  } ansonsten {
+  } sonst {
     konsole.log("Nein!");
   }
 </script>
