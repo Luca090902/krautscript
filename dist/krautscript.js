@@ -8,7 +8,7 @@ KS.keywords = {
        for: 'für',
      while: 'während',
     return: 'rückkehr',
-        do: 'tu',
+        do: 'tue',
        var: 'var',
         in: 'in',
        let: 'lasse',
