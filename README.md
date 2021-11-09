@@ -42,5 +42,5 @@ KrautScript.englishToGerman(code); // returns a string representing the translat
 ### Missing/incorrect translations?
 You can see the translations over [here](https://github.com/Luca090902/krautscript/blob/gh-pages/dist/krautscript.js#L4). Feel free to submit a pull request!
 
-###TO-DOs
-- Translation
+### Acknowledges
+To [@pushmatrix](https://github.com/pushmatrix/) for creating the [original project](https://github.com/pushmatrix/fikascript).
