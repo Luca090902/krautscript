@@ -24,7 +24,7 @@ CodeMirror.defineMode("javascript", function(config, parserConfig) {
       "this": kw("this")
     };
 
-    // Add colours for the swedish keywords
+    // Add colours for the German keywords
     for(token in FS.tokens) {
       jsKeywords[FS.tokens[token]] = jsKeywords[token];
     }
