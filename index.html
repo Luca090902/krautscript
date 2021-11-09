@@ -356,8 +356,8 @@
       for(type in types) {
         type = types[type];
         var table = $("#translation-" + type);
-        for (key in FS[type]) {
-          table.append("<tr><td>" + key + "</td><td>" + FS.germanTokens[key] + "</td></tr>");
+        for (key in KS[type]) {
+          table.append("<tr><td>" + key + "</td><td>" + KS.germanTokens[key] + "</td></tr>");
         }
       }
     }
@@ -371,9 +371,9 @@
         var errorsClass = $('#' + type + ' .errors');
         try {
           if (type == 'ger-eng') {
-            result = FS.germanToEnglish(text);
+            result = KS.germanToEnglish(text);
           } else {
-            result = FS.englishToGerman(text);
+            result = KS.englishToGerman(text);
           }
           output.setValue(result);
           errorsClass.hide();
