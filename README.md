@@ -22,7 +22,7 @@ KrautScript supports the `text/krautscript` MIME type. Any script tag with that 
 
 You can also specify a `src` for your script tags: 
 ```html
-<script type="text/fikascript" src="snaps.fika"></script>
+<script type="text/krautscript" src="snaps.kraut"></script>
 ```
 
 #### Optional
@@ -40,7 +40,7 @@ KrautScript.englishToGerman(code); // returns a string representing the translat
 ```
 
 ### Missing/incorrect translations?
-You can see the translations over [here](https://github.com/pushmatrix/fikascript/blob/gh-pages/dist/krautscript.js#L4). Feel free to submit a pull request!
+You can see the translations over [here](https://github.com/Luca090902/krautscript/blob/gh-pages/dist/krautscript.js#L4). Feel free to submit a pull request!
 
 ###TO-DOs
 - Translation
