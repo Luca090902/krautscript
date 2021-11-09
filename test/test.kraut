@@ -1,35 +1,35 @@
-funktion hej() {
+funktion hallo() {
   var a = [1,2,3];
-  för (i inuti a) { 
+  für (i in a) { 
   }
-  återvänd a;
+  rückkehr a;
 }
 
-var saker = ny hej();
+var sachen = neu hallo();
 
-om ( x < 5 ) {
-  försök {
-  } fånga (exception) {
-    detta.stuff = '5';
-  } slutligen {
-    gör {
+wenn ( x < 5 ) {
+  versuche {
+  } fange (exception) {
+    das.stuff = '5';
+  } schließlich {
+    tu {
       x++; 
-    } medan (x<10);
+    } während (x<10);
   }
-  för(var x = 0; x < 10; x++) {
-    om (x % 2) {
-      bryt;
-    } annars {
-      byt(x) {
-        fall 5: bryt;
-        standard: bryt;
+  für(var x = 0; x < 10; x++) {
+    wenn (x % 2) {
+      bruch;
+    } sonst {
+      wechsle(x) {
+        fall 5: bruch;
+        standard: bruch;
       }
-      fortsätt;
+      fortsetzen;
     }
   }
 }
 
-sant;
-falsk;
-noll;
+wahr;
+falsch;
+null;
 dokument;
