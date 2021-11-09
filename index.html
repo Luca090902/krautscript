@@ -1,16 +1,16 @@
 <html>
 <head>
-  <title>FikaScript: Write JavaScript in Swedish</title>
+  <title>KrautScript: Write JavaScript in German</title>
   <meta charset="utf-8">
   <link rel="icon" 
       type="image/png" 
       href="assets/img/favicon.ico">
-  <meta name="description" content="Write JavaScript in Swedish">
-  <meta name="keywords" content="FikaScript, Sweden, JavaScript">
-  <meta name="author" content="Daniel Beauchamp">
+  <meta name="description" content="Write JavaScript in German">
+  <meta name="keywords" content="KrautScript, Germany, JavaScript">
+  <meta name="author" content="Luca090902">
   <meta name="viewport" content="width=device-width, initial-scale=0.5">
   <link rel="stylesheet" type="text/css" href="assets/css/codemirror.css">
-  <script type="text/javascript" src="dist/fikascript.js"></script>
+  <script type="text/javascript" src="dist/krautscript.js"></script>
   <script type="text/javascript" src="assets/js/codemirror.js"></script>
   <script type="text/javascript" src="assets/js/codemirror-javascript.js"></script>
   <link href='http://fonts.googleapis.com/css?family=Lilita+One' rel='stylesheet' type='text/css'>
@@ -276,13 +276,13 @@
   }(document, 'script', 'facebook-jssdk'));</script>
 
   <div id="container">
-    <h1 id="logo">FikaScript</h1>
+    <h1 id="logo">KrautScript</h1>
     <ul class="tabs">
-      <li class="tab active" data-tab="swe-eng">
-        SWE &#8594; ENG
+      <li class="tab active" data-tab="ger-eng">
+        GER &#8594; ENG
       </li>
-      <li class="tab" data-tab="eng-swe">
-        ENG &#8594; SWE
+      <li class="tab" data-tab="eng-ger">
+        ENG &#8594; GER
       </li>
       <li class="tab" data-tab="docs">
         Docs
@@ -290,7 +290,7 @@
     </ul>
     <div id="editor-window">
       <div id="pages">
-        <div class="page visible" id="swe-eng">
+        <div class="page visible" id="ger-eng">
           <div class="editor input"></div>
           <div class="errors">
             <p></p>
@@ -299,7 +299,7 @@
           <div class="runBtn">Run</div>
         </div>
 
-        <div class="page" id="eng-swe">
+        <div class="page" id="eng-ger">
           <div class="editor input"></div>
           <div class="errors">
             <p></p>
@@ -310,29 +310,28 @@
   
         <div class="page" id="docs">
           <div class="content">
-            <h2>FikaScript</h2>
-            <p>FikaScript lets you write JavaScript in Swedish; Finally there is a way for Swedes to code in their native language!
-            It is named after <a href="http://en.wikipedia.org/wiki/Fika_(coffee_break)" target="_blank"><strong>fika</strong></a>, the sacred Swedish coffee break.</p>
+            <h2>KrautScript</h2>
+            <p>KrautScript lets you write JavaScript in German; Finally there is a way for Germans to code in their native language!</p>
             <h2>Translations</h2>
             <h3>Keywords</h3>
             <table id="translation-keywords" class="translations">
               <tr>
                 <th>English</th>
-                <th>Swedish</th>
+                <th>German</th>
               </tr>
             </table>
             <h3>Literals</h3>
             <table id="translation-literals" class="translations">
               <tr>
                 <th>English</th>
-                <th>Swedish</th>
+                <th>German</th>
               </tr>
             </table>
             <h3>Identifiers</h3>
             <table id="translation-identifiers" class="translations">
               <tr>
                 <th>English</th>
-                <th>Swedish</th>
+                <th>German</th>
               </tr>
             </table>
             <h2>Missing a translation?</h2>
@@ -343,12 +342,11 @@
       </div>
     </div>
     <footer>
-      <a href="http://twitter.com/pushmatrix" target="_blank">Made by Daniel</a>&nbsp;&nbsp;&#183;&nbsp;&nbsp;
-      <a href="http://github.com/pushmatrix/fikascript" target="_blank">View on Github</a>
+      <a href="https://github.com/Luca090902/krautscript" target="_blank">View on Github</a>
       <div id='social-btns'>
-        <a href="https://twitter.com/share" class="twitter-share-button" data-text="FikaScript: Finally there is a way for Swedes to write JavaScript in Swedish." data-count="none" data-hashtags="sweden">Tweet</a>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-text="KrautScript: Finally there is a way for Germans to write JavaScript in German." data-count="none" data-hashtags="germany">Tweet</a>
         <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
-        <div class="fb-like" data-href="http://fikascript.se" data-width="10" data-layout="button_count" data-show-faces="false" data-send="false"></div>
+        <div class="fb-like" data-href="https://luca090902.github.io/krautscript/" data-width="10" data-layout="button_count" data-show-faces="false" data-send="false"></div>
       </div>
     </footer>
   </div>
@@ -359,7 +357,7 @@
         type = types[type];
         var table = $("#translation-" + type);
         for (key in FS[type]) {
-          table.append("<tr><td>" + key + "</td><td>" + FS.swedishTokens[key] + "</td></tr>");
+          table.append("<tr><td>" + key + "</td><td>" + FS.germanTokens[key] + "</td></tr>");
         }
       }
     }
@@ -372,10 +370,10 @@
         var text = cm.getValue();
         var errorsClass = $('#' + type + ' .errors');
         try {
-          if (type == 'swe-eng') {
-            result = FS.swedishToEnglish(text);
+          if (type == 'ger-eng') {
+            result = FS.germanToEnglish(text);
           } else {
-            result = FS.englishToSwedish(text);
+            result = FS.englishToGerman(text);
           }
           output.setValue(result);
           errorsClass.hide();
@@ -404,19 +402,19 @@
 
       populateTranslationTables(['keywords', 'literals', 'identifiers']);
       editors = {};
-      setupCodeMirror("swe-eng");
-      setupCodeMirror("eng-swe");
-      selectPage('swe-eng');
+      setupCodeMirror("ger-eng");
+      setupCodeMirror("eng-ger");
+      selectPage('ger-eng');
 
-      $.get("assets/sampleSwedish.txt", function(val) {
-        editors['swe-eng'].setValue(val);
-        editors['swe-eng'].setCursor(1);
+      $.get("assets/sampleGerman.txt", function(val) {
+        editors['ger-eng'].setValue(val);
+        editors['ger-eng'].setCursor(1);
       });
 
       $.get("assets/sampleEnglish.txt", function(val) {
-        editors['eng-swe'].setValue(val);
+        editors['eng-ger'].setValue(val);
 
-        editors['eng-swe'].setCursor(2);
+        editors['eng-ger'].setCursor(2);
       });
 
       $('.tab').click(function() {
@@ -429,10 +427,10 @@
       $('.runBtn').click(function() {
         var page = $(this).parents('.page').attr('id');
         var code = '';
-        if (page == 'eng-swe') {
-          code = editors['eng-swe'].getValue();
+        if (page == 'eng-ger') {
+          code = editors['eng-ger'].getValue();
         } else {
-          code = editors['swe-eng-output'].getValue();
+          code = editors['ger-eng-output'].getValue();
         }
         eval(code);
       });
@@ -446,7 +444,7 @@
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-43373805-1', 'fikascript.se');
+  ga('create', 'UA-43373805-1', 'luca090902.github.io');
   ga('send', 'pageview');
 </script>
 </body>
