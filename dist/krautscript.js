@@ -21,7 +21,7 @@ KS.keywords = {
      throw: 'werf',
      catch: 'fange',
     switch: 'wechsle',
-  continue: 'fortsetze',
+  continue: 'fortsetzen',
   debugger: 'debugger',
 instanceof: 'instanzvon',
     typeof: 'typvon',
