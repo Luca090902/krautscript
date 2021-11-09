@@ -1,36 +1,36 @@
-// Write JavaScript in Swedish!
+// Write JavaScript in German!
 
-var namn = fråga('Vad är ditt namn?');
-ropa('Hej! ' + namn);
+var name = frage('Wie ist Ihr Name?');
+alarm('Hallo! ' + name);
 
-om (namn == 'Agnetha' || namn == 'Björn') {
-  barnvagnar = 2;
-} annars {
-  barnvagnar = 4;
+wenn (name == 'Agnetha' || name == 'Björn') {
+  kinderwagen = 2;
+} sonst {
+  kinderwagen = 4;
 }
-IKEA = 'lingondryck';
-ropa('Vad ska vi äta på IKEA?');
+IKEA = 'preiselbeere';
+alarm('Was sollen wir bei IKEA essen?');
 
-försök {
-    ropa('Försöker ta ett beslut...');
-    göraBeslut();
-} fånga (undantag) {
-    ropa('En gruppdiskussion börjar');
-    gruppDiskussion();
-} slutligen {
-    ropa('Ge upp...');
+versuche {
+    alarm('Ich versuche, eine Entscheidung zu treffen...');
+    treffeEntscheidung();
+} fange (freistellung) {
+    alarm('Eine Gruppendiskussion beginnt');
+    gruppenDiskussion();
+} schließlich {
+    alarm('Gib auf...');
 }
 
 // Bork bork bork
-funktion gruppDiskussion() {
-  var timmar = 0;
+funktion gruppenDiskussion() {
+  var stunden = 0;
   var snaps = 0;
-  medan (timmar < 3) {
-    ropa('En gång till');
-    timmar++;
+  während (stunden < 3) {
+    alarm('Ein weiteres Mal');
+    stunden++;
     snaps++;
   }
-  returnera 'köttbullar';
+  rückkehr 'Fleischbällchen';
 }
 
-konsol.log('EUPHORRRRRIA');
+konsole.log('EUPHORRRRRIA');
